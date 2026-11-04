@@ -1,0 +1,6 @@
+{
+  "name": "Devconnect",
+  "description": "Developer marketplace to upload tools, sell scripts, and discover production-ready code snippets and boilerplates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

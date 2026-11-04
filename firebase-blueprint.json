@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "User account profile for Devconnect buyers and sellers",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "Display or developer name" },
+        "photoURL": { "type": "string", "description": "Profile picture URL" },
+        "isSeller": { "type": "boolean", "description": "Whether user has activated seller privileges" },
+        "createdAt": { "type": "string", "description": "Account creation timestamp" },
+        "updatedAt": { "type": "string", "description": "Profile update timestamp" }
+      },
+      "required": ["uid", "email", "isSeller"]
+    },
+    "devProduct": {
+      "title": "DevProduct",
+      "description": "Developer tool, script, or digital code asset listed on the marketplace",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 140 },
+        "productType": { "type": "string", "enum": ["Tool", "Script", "Code Snippet", "UI Kit", "Template", "Resource", "API", "Boilerplate"] },
+        "category": { "type": "string" },
+        "priceUsd": { "type": "number" },
+        "priceNgn": { "type": "number" },
+        "description": { "type": "string", "maxLength": 2000 },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "isArchived": { "type": "boolean" },
+        "salesCount": { "type": "number" }
+      },
+      "required": ["name", "productType", "category", "priceUsd", "sellerId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "User profile with role flags and preferences"
+    },
+    "/products/{productId}": {
+      "schema": "devProduct",
+      "description": "Marketplace listings of tools and code"
+    }
+  }
+}
